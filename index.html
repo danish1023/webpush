@@ -36,11 +36,11 @@
                 navigator.serviceWorker.register('firebase-messaging-sw.js')
                 .then(function(registration) {
                     console.log('Registration successful, scope is:', registration.scope);
+                    return messaging.getToken();
                 }).catch(function(err) {
                     console.log('Service worker registration failed, error:', err);
                 });
             }
-            return messaging.getToken();
         })
         .then(function (token) {
             console.log(token);
